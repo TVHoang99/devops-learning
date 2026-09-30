@@ -8,6 +8,4 @@ RUN pipx install poetry
 
 COPY main.py /app/main.py
 
-RUN chmod +x /app/main.py
-
 CMD ["python", "main.py"]
