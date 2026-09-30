@@ -7,3 +7,5 @@
    ```
 
 2. Open browser and access to [http://localhost:8000](http://localhost:8000)
+
+3. In production, access to [http://hoangtv.io.vn](http://hoangtv.io.vn)

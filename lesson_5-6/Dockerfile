@@ -5,8 +5,7 @@ WORKDIR /fasiapi
 # Install dependencies using poetry
 COPY ./pyproject.toml /fasiapi/pyproject.toml
 RUN pip install poetry
-# RUN poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi
-RUN poetry install --no-interaction --no-ansi
+RUN poetry install
 
 COPY ./main.py /fasiapi/main.py
 
