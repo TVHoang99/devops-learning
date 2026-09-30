@@ -13,4 +13,4 @@ COPY ./main.py /fasiapi/main.py
 # Run API after starting
 COPY ./startup.sh /fasiapi/startup.sh
 RUN chmod +x /fasiapi/startup.sh
-ENTRYPOINT ["sh","/fasiapi/startup.sh"]
+ENTRYPOINT ["/fasiapi/startup.sh"]
