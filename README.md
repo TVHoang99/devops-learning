@@ -9,5 +9,4 @@
 
 - Open browser and access to [http://localhost](http://localhost)
 
-2. In production
-- Access to [http://hoangtv.io.vn](http://hoangtv.io.vn)
+2. In production, access to [http://hoangtv.io.vn](http://hoangtv.io.vn)
