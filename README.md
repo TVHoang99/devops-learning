@@ -3,9 +3,9 @@
    ```bash
    cd lesson_5-6
    docker build . -t lesson_5-6
-   docker run --rm -it -p 8000:8000 lesson_5-6
+   docker run --rm -it -p 80:8000 lesson_5-6
    ```
 
-2. Open browser and access to [http://localhost:8000](http://localhost:8000)
+2. Open browser and access to [http://localhost](http://localhost)
 
 3. In production, access to [http://hoangtv.io.vn](http://hoangtv.io.vn)
