@@ -25,6 +25,6 @@
   docker build -f Dockerfile.prod . -t lesson_5-6:prod
 
   # Run container on VPS/Server
-  docker run --rm -p 80:80 -p 443:443 -v letsencrypt_certs:/etc/letsencrypt lesson_5-6:prod
+  docker run --rm -p "80:80" -p "443:443" -v letsencrypt_certs:/etc/letsencrypt lesson_5-6:prod
   ```
 - Access browser: [https://hoangtv.io.vn/helloworld](https://hoangtv.io.vn/helloworld)
