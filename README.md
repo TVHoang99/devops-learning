@@ -5,6 +5,7 @@
   ```bash
   cd lesson_5-6
   cp .env.local .env
+
   # Build image for local environment
   docker build -f Dockerfile . -t lesson_5-6:local
 
@@ -19,6 +20,7 @@
   ```bash
   cd lesson_5-6
   cp .env.prod .env
+
   # Build image for production environment
   docker build -f Dockerfile.prod . -t lesson_5-6:prod
 
