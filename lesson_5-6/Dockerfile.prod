@@ -19,6 +19,6 @@ COPY ./startup.sh /fasiapi/startup.sh
 RUN chmod +x /fasiapi/startup.sh
 
 # Copy .env file
-COPY ./.env.prod /fasiapi/.env
+COPY ./.env /fasiapi/.env
 
 ENTRYPOINT ["/fasiapi/startup.sh"]
