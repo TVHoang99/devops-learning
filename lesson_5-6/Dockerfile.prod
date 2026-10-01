@@ -1,0 +1,21 @@
+FROM python:3.14
+
+WORKDIR /fasiapi
+
+# Install certbot for Let's Encrypt certificate management on production
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends certbot && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install dependencies using poetry
+COPY ./pyproject.toml /fasiapi/pyproject.toml
+RUN pip install poetry
+RUN poetry install
+
+COPY ./main.py /fasiapi/main.py
+
+# Copy and setup startup script
+COPY ./startup.sh /fasiapi/startup.sh
+RUN chmod +x /fasiapi/startup.sh
+
+ENTRYPOINT ["/fasiapi/startup.sh"]
