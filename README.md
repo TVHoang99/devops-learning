@@ -7,6 +7,6 @@
    docker run --rm -it -p 80:8000 lesson_5-6
    ```
 
-- Open browser and access to [http://localhost](http://localhost)
+- Open browser and access to [http://localhost/helloworld](http://localhost/helloworld)
 
-2. In production, access to [http://hoangtv.io.vn](http://hoangtv.io.vn)
+2. In production, access to [http://hoangtv.io.vn/helloworld](http://hoangtv.io.vn/helloworld)
