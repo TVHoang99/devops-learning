@@ -16,6 +16,9 @@ RUN mkdir -p /fasiapi/certs && \
 
 COPY ./main.py /fasiapi/main.py
 
+# Copy .env file
+COPY ./.env.local /fasiapi/.env
+
 # Run API after starting
 COPY ./startup.sh /fasiapi/startup.sh
 RUN chmod +x /fasiapi/startup.sh

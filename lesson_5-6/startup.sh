@@ -1,5 +1,13 @@
 #! /bin/bash
 
+# Check .env file
+if [ -f .env ]; then
+    source .env
+else
+    echo "No .env file found. Exiting..."
+    exit 1
+fi
+
 # Load configurations with fallback defaults
 ENVIRONMENT="${ENVIRONMENT:-local}"
 HOST="${HOST:-0.0.0.0}"
