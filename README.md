@@ -28,3 +28,6 @@
   docker run --rm -p "80:80" -p "443:443" -v letsencrypt_certs:/etc/letsencrypt lesson_5-6:prod
   ```
 - Access browser: [https://hoangtv.io.vn/helloworld](https://hoangtv.io.vn/helloworld)
+
+## Lesson 8
+lesson_8/lesson_8_diagram.png
