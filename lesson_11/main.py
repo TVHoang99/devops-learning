@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy import text
 
 # ==============================================================================
 # 1. DATABASE CONNECTION CONFIGURATION (MYSQL)
@@ -88,7 +89,7 @@ async def helloworld():
 async def check_rds_connection(db: Session = Depends(get_db)):
     try:
         # Execute a basic SQL statement compatible with MySQL to verify the connection
-        db.execute("SELECT 1")
+        db.execute(text("SELECT 1"))
         return {"status": "success", "message": "Successfully connected to RDS MySQL Database!"}
     except Exception as e:
         raise HTTPException(

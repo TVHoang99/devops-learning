@@ -1,15 +1,18 @@
 [project]
-name = "fasiapi_app"
+name = "fastapi_app"
 version = "0.1.0"
-description = ""
-authors = [
-    {name = "Your Name",email = "you@example.com"}
-]
+description = "Ứng dụng FastAPI chạy trên Docker và AWS"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.12"
+authors = [
+    { name = "Your Name", email = "you@example.com" }
+]
 dependencies = [
-    "fastapi>=0.142.0",
-    "uvicorn>=0.53.0"
+    "fastapi>=0.115.0",
+    "uvicorn>=0.30.0",
+    "sqlalchemy>=2.0.0",
+    "pymysql>=1.1.0",       # <--- Thêm thư viện kết nối MySQL
+    "cryptography>=42.0.0"  # <--- Hỗ trợ cơ chế bảo mật/mật khẩu mã hóa của MySQL
 ]
 
 [tool.poetry]
