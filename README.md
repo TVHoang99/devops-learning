@@ -8,4 +8,6 @@
 
   - Check show database: [http://35.77.221.58/show-databases](http://35.77.221.58/show-databases)
 
-[ECS connect to RDS Architecture](./lesson_11/lesson_11.drawio.svg)
+- ECS connect to RDS Architecture:
+
+  ![ECS connect to RDS Architecture](./lesson_11/lesson_11.drawio.svg)
