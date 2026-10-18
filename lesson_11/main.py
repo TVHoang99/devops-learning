@@ -1,7 +1,7 @@
 import os
 from fastapi import FastAPI, Depends, HTTPException, status
 from pydantic import BaseModel
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy import text
@@ -25,41 +25,8 @@ engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-
 # ==============================================================================
-# 2. ORM MODEL DEFINITION (Database Table)
-# ==============================================================================
-class DBItem(Base):
-    __tablename__ = "items"
-
-    id = Column(Integer, primary_key=True, index=True)
-    # NOTE: In MySQL, indexed String columns must have a specified length (e.g., VARCHAR(100))
-    title = Column(String(100), index=True, nullable=False)
-    description = Column(String(255), nullable=True)
-
-# Automatically create tables in MySQL if they do not exist
-Base.metadata.create_all(bind=engine)
-
-
-# ==============================================================================
-# 3. PYDANTIC SCHEMAS (API Request/Response Data Validation)
-# ==============================================================================
-class ItemBase(BaseModel):
-    title: str
-    description: str | None = None
-
-class ItemCreate(ItemBase):
-    pass
-
-class ItemResponse(ItemBase):
-    id: int
-
-    class Config:
-        from_attributes = True
-
-
-# ==============================================================================
-# 4. FASTAPI INITIALIZATION & DEPENDENCY
+# 2. FASTAPI INITIALIZATION & DEPENDENCY
 # ==============================================================================
 app = FastAPI(title="ECS to RDS MySQL CRUD API")
 
@@ -73,7 +40,7 @@ def get_db():
 
 
 # ==============================================================================
-# 5. API ENDPOINTS
+# 3. API ENDPOINTS
 # ==============================================================================
 
 @app.get("/")
@@ -97,51 +64,14 @@ async def check_rds_connection(db: Session = Depends(get_db)):
             detail=f"MySQL Connection failed: {str(e)}"
         )
 
-# --- CRUD FUNCTIONS ---
-
-# CREATE: Add a new record
-@app.post("/items", response_model=ItemResponse, status_code=status.HTTP_201_CREATED)
-def create_item(item: ItemCreate, db: Session = Depends(get_db)):
-    db_item = DBItem(title=item.title, description=item.description)
-    db.add(db_item)
-    db.commit()
-    db.refresh(db_item)
-    return db_item
-
-# READ ALL: Fetch a list of records (with pagination)
-@app.get("/items", response_model=list[ItemResponse])
-def read_items(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    items = db.query(DBItem).offset(skip).limit(limit).all()
-    return items
-
-# READ ONE: Fetch a single record details by ID
-@app.get("/items/{item_id}", response_model=ItemResponse)
-def read_item(item_id: int, db: Session = Depends(get_db)):
-    db_item = db.query(DBItem).filter(DBItem.id == item_id).first()
-    if db_item is None:
-        raise HTTPException(status_code=404, detail="Item not found")
-    return db_item
-
-# UPDATE: Modify an existing record by ID
-@app.put("/items/{item_id}", response_model=ItemResponse)
-def update_item(item_id: int, updated_item: ItemCreate, db: Session = Depends(get_db)):
-    db_item = db.query(DBItem).filter(DBItem.id == item_id).first()
-    if db_item is None:
-        raise HTTPException(status_code=404, detail="Item not found")
-    
-    db_item.title = updated_item.title
-    db_item.description = updated_item.description
-    db.commit()
-    db.refresh(db_item)
-    return db_item
-
-# DELETE: Remove a record by ID
-@app.delete("/items/{item_id}", status_code=status.HTTP_204_NO_CONTENT)
-def delete_item(item_id: int, db: Session = Depends(get_db)):
-    db_item = db.query(DBItem).filter(DBItem.id == item_id).first()
-    if db_item is None:
-        raise HTTPException(status_code=404, detail="Item not found")
-    
-    db.delete(db_item)
-    db.commit()
-    return None
+@app.get("/show-databases")
+async def show_databases(db: Session = Depends(get_db)):
+    try:
+        result = db.execute(text("show databases"))
+        databases = [row[0] for row in result.fetchall()]
+        return {"status": "success", "database_list": databases}
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"MySQL Connection failed: {str(e)}"
+        )
