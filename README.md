@@ -216,7 +216,7 @@ def lambda_handler(event, context):
 Endpoint format:
 
 ``` text
-https://YOUR_API_ID.execute-api.ap-northeast-1.amazonaws.com/users
+https://cvflcs70ca.execute-api.ap-northeast-1.amazonaws.com/users
 ```
 
 ### 10. Test the API
@@ -224,7 +224,7 @@ https://YOUR_API_ID.execute-api.ap-northeast-1.amazonaws.com/users
 **Using curl:**
 
 ``` bash
-curl -i https://YOUR_API_ID.execute-api.ap-northeast-1.amazonaws.com/users
+curl -i https://cvflcs70ca.execute-api.ap-northeast-1.amazonaws.com/users
 ```
 
 **Using Postman:**
@@ -234,21 +234,6 @@ curl -i https://YOUR_API_ID.execute-api.ap-northeast-1.amazonaws.com/users
 3.  Enter the API endpoint.
 4.  Select **Send**.
 5.  Verify that the response returns HTTP `200` and the users data.
-
-## Completion checklist
-
--   [ ] Create DynamoDB table `Users`.
--   [ ] Add sample users.
--   [ ] Create IAM role and attach the required policies.
--   [ ] Create Lambda function `get-users`.
--   [ ] Deploy the Python code.
--   [ ] Set `TABLE_NAME=Users`.
--   [ ] Set Lambda memory to `1024 MB`.
--   [ ] Set Lambda timeout to `30 seconds`.
--   [ ] Test the Lambda function.
--   [ ] Create API Gateway HTTP API.
--   [ ] Configure `GET /users`.
--   [ ] Test the API with Postman or curl.
 
 ## Cleanup
 
