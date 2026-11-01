@@ -7,18 +7,18 @@ Deploy a Python AWS Lambda function connected to DynamoDB and expose a
 
 ## Configuration
 
-  Component            Value
-  -------------------- --------------------
-  Runtime              Python 3.12
-  Lambda function      `get-users`
-  Memory               `1024 MB` (1 GB)
-  Timeout              `30 seconds`
-  DynamoDB table       `Users`
-  Partition key        `user_id` (String)
-  API type             HTTP API
-  Method               `GET`
-  Route                `/users`
-  Example AWS Region   `ap-northeast-1`
+| Component          | Value                |
+| ------------------ | -------------------- |
+| Runtime            | Python 3.12          |
+| Lambda function    | `get-users`          |
+| Memory             | `1024 MB` (1 GB)     |
+| Timeout            | `30 seconds`         |
+| DynamoDB table     | `Users`              |
+| Partition key      | `user_id` (String)   |
+| API type           | HTTP API             |
+| Method             | `GET`                |
+| Route              | `/users`             |
+| Example AWS Region | `ap-northeast-1`     |
 
 ## Steps
 
