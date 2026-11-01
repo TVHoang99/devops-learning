@@ -216,7 +216,7 @@ def lambda_handler(event, context):
 Endpoint format:
 
 ``` text
-https://cvflcs70ca.execute-api.ap-northeast-1.amazonaws.com/users
+https://YOUR_API_ID.execute-api.ap-northeast-1.amazonaws.com/users
 ```
 
 ### 10. Test the API
@@ -224,7 +224,7 @@ https://cvflcs70ca.execute-api.ap-northeast-1.amazonaws.com/users
 **Using curl:**
 
 ``` bash
-curl -i https://cvflcs70ca.execute-api.ap-northeast-1.amazonaws.com/users
+https://YOUR_API_ID.execute-api.ap-northeast-1.amazonaws.com/users
 ```
 
 **Using Postman:**
