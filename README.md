@@ -234,29 +234,3 @@ curl -i https://cvflcs70ca.execute-api.ap-northeast-1.amazonaws.com/users
 3.  Enter the API endpoint.
 4.  Select **Send**.
 5.  Verify that the response returns HTTP `200` and the users data.
-
-## Cleanup
-
-To avoid ongoing charges, delete the lab resources when they are no
-longer needed:
-
-1.  Delete the API Gateway API `users-api`.
-2.  Delete the Lambda function `get-users`.
-3.  Delete the DynamoDB table `Users`.
-4.  Delete the IAM role `lambda-dynamodb-users-role` if it is not used
-    by other workloads.
-
-## AWS Documentation
-
--   [AWS
-    Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
--   [Lambda memory
-    configuration](https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html)
--   [Lambda with
-    DynamoDB](https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html)
--   [DynamoDB Scan
-    API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Scan.html)
--   [API Gateway HTTP API Lambda
-    integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html)
--   [Lambda execution
-    roles](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html)
